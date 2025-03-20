@@ -31,5 +31,14 @@ public class Employee {
         this.department = department;
         this.nationality = nationality;
     }
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                ", department='" + department + '\'' +
+                ", Nationality' " + nationality + '\'';
+    }
 
 }

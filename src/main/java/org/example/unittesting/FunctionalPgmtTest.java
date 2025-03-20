@@ -5,6 +5,8 @@ import org.example.java8.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+
 
 public class FunctionalPgmtTest {
 
@@ -78,6 +81,39 @@ public class FunctionalPgmtTest {
         // Then
         assertEquals(30, result);
         verify(reduceFunctionMock).apply(10, 20);
+    }
+
+    @Test
+    public void testSortEmployeeBasedOnEmailAdDressLength() {
+        List<User> employees = Arrays.asList(
+                new User("John", 30, "demo@gmail.com"),
+                new User("Pratik", 22, "JohnErih@gmail.com"),
+                new User("Devil", 60, "ro@gmail.com"));
+        //when(JavaFunctionalPgm.sortEmployeeBasedOnEmailAdDressLength(employees)).thenReturn(employees);
+        List<User> result = JavaFunctionalPgm.sortEmployeeBasedOnEmailAdDressLength(employees);
+        assertEquals(3, result.size());
+        assertEquals("ro@gmail.com", result.get(0).getEmail());
+        assertEquals("demo@gmail.com", result.get(1).getEmail());
+
+    }
+
+    // Another approach to test static method.
+    @Test
+    public void testSortEmployeeBasedOnEmailAdDressLengthUsingStatic() {
+        List<User> employees = Arrays.asList(
+                new User("John", 30, "demo@gmail.com"),
+                new User("Pratik", 22, "JohnErih@gmail.com"),
+                new User("Devil", 60, "ro@gmail.com"));
+        try (MockedStatic<JavaFunctionalPgm> theMock = Mockito.mockStatic(JavaFunctionalPgm.class)) {
+            theMock.when(() -> JavaFunctionalPgm.sortEmployeeBasedOnEmailAdDressLength(employees)).thenReturn(employees);
+            List<User> result = JavaFunctionalPgm.sortEmployeeBasedOnEmailAdDressLength(employees);
+            System.out.println(result);
+            assertEquals(3, result.size());
+            assertEquals("ro@gmail.com", result.get(0).getEmail());
+            assertEquals("demo@gmail.com", result.get(1).getEmail());
+            theMock.verify(() -> JavaFunctionalPgm.sortEmployeeBasedOnEmailAdDressLength(employees));
+
+        }
     }
 
 }

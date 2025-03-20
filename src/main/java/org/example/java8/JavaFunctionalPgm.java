@@ -1,5 +1,6 @@
 package org.example.java8;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,4 +28,11 @@ public class JavaFunctionalPgm {
     public int reduceSum(int a, int b, ReduceFunction<Integer> reduceFunction) {
         return reduceFunction.apply(a, b);
     }
+
+    public static List<User> sortEmployeeBasedOnEmailAdDressLength(List<User> employees){
+        return employees.stream()
+                .sorted(Comparator.comparingInt(emp -> emp.getEmail().length()))
+                .collect(Collectors.toList());
+    }
+
 }

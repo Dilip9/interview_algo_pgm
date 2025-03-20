@@ -50,6 +50,7 @@ public class FunctionalPgm {
         //custom functional interface and reduce method.
         ReduceFunction<Integer> reduceFunction = Integer::sum;
         System.out.println("Sum of two numbers: "+reduceFunction.apply(num1, num2));
+        System.out.println("Sum of two numbers: "+JavaFunctionalPgm.sortEmployeeBasedOnEmailAdDressLength(users));
 
     }
 }
