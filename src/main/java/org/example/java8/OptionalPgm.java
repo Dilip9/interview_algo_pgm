@@ -1,8 +1,11 @@
 package org.example.java8;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static org.mockito.ArgumentMatchers.nullable;
 
@@ -46,7 +49,17 @@ public class OptionalPgm {
         Optional<Integer> sum = numbers.stream().reduce(Integer::sum);
         System.out.println("Sum of numbers: " + sum.isPresent()); // true
 
-
+        String str = "Hello my dear friend";
+        Character chr = str.chars()
+                .mapToObj(c -> c)
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet().stream().filter(entry -> entry.getValue() == 2)
+                .map(entry -> (char) entry.getKey().intValue())
+                .findFirst().get();;
+                System.out.println("First non-repeating character: " + chr);
+        List<String> words = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple");
+        words.stream().collect(Collectors.groupingBy(word -> word, Collectors.counting()))
+                .entrySet().stream().forEach(entry -> System.out.println(entry.getKey() + " : " + entry.getValue()));
     }
 
 }
