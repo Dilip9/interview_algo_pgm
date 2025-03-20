@@ -51,12 +51,6 @@ public class FunctionalPgm {
         ReduceFunction<Integer> reduceFunction = Integer::sum;
         System.out.println("Sum of two numbers: "+reduceFunction.apply(num1, num2));
 
-
-
-
-
-
-
     }
 }
 
