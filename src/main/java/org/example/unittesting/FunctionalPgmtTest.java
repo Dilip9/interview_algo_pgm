@@ -1,18 +1,24 @@
 package org.example.unittesting;
 
+import static org.mockito.Mockito.when;
 import org.example.java8.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static javafx.beans.binding.Bindings.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
-public class FunctionalPgmt {
+public class FunctionalPgmtTest {
 
     private JavaFunctionalPgm functionalPgm;
+
+    @Mock
+    private SumofTwoNumber sumofTwoNumber;
 
     @BeforeEach
     public void setup() {
@@ -49,15 +55,29 @@ public class FunctionalPgmt {
         assertEquals("Bob", result.get(1).getName());
     }
 
-//    @Test
-//    void testSumOfTwoNumbers() {
-//        SumofTwoNumber sumofTwoNumber = mock(SumofTwoNumber.class);
-//        when(sumofTwoNumber.sum(10, 20)).thenReturn(30);
-//
-//        int result = functionalPgm.sumOfTwoNumbers(10, 20, sumofTwoNumber);
-//        assertEquals(30, result);
-//
-//        verify(sumofTwoNumber).sum(10, 20);
-//    }
+    @Test
+    void testSumOfTwoNumbers() {
+        SumofTwoNumber sumofTwoNumber = mock(SumofTwoNumber.class);
+        when(sumofTwoNumber.sum(10, 20)).thenReturn(30);
+
+        int result = functionalPgm.sumOfTwoNumbers(10, 20, sumofTwoNumber);
+        assertEquals(30, result);
+
+        verify(sumofTwoNumber).sum(10, 20);
+    }
+
+    @Test
+    void testReduceSum() {
+        // Given
+        ReduceFunction<Integer> reduceFunctionMock = mock(ReduceFunction.class);
+        when(reduceFunctionMock.apply(10, 20)).thenReturn(30);
+
+        // When
+        int result = functionalPgm.reduceSum(10, 20, reduceFunctionMock);
+
+        // Then
+        assertEquals(30, result);
+        verify(reduceFunctionMock).apply(10, 20);
+    }
 
 }
