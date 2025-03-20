@@ -1,14 +1,13 @@
 package org.example.unittesting;
 
-import org.example.java8.Employee;
-import org.example.java8.FunctionalPgm;
-import org.example.java8.JavaFunctionalPgm;
+import org.example.java8.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static javafx.beans.binding.Bindings.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FunctionalPgmt {
@@ -34,4 +33,31 @@ public class FunctionalPgmt {
 
         // Write your test code here
     }
+    @Test
+    void testFilterUsersByAge() {
+        List<User> users = Arrays.asList(
+                new User("John", 30, "john@gmail.com"),
+                new User("Alice", 22, "alice@gmail.com"),
+                new User("Bob", 60, "bob@gmail.com")
+        );
+
+        List<Integer> validAges = Arrays.asList(30, 60);
+
+        List<User> result = functionalPgm.filterUsersByAge(users, validAges);
+        assertEquals(2, result.size());
+        assertEquals("John", result.get(0).getName());
+        assertEquals("Bob", result.get(1).getName());
+    }
+
+//    @Test
+//    void testSumOfTwoNumbers() {
+//        SumofTwoNumber sumofTwoNumber = mock(SumofTwoNumber.class);
+//        when(sumofTwoNumber.sum(10, 20)).thenReturn(30);
+//
+//        int result = functionalPgm.sumOfTwoNumbers(10, 20, sumofTwoNumber);
+//        assertEquals(30, result);
+//
+//        verify(sumofTwoNumber).sum(10, 20);
+//    }
+
 }
