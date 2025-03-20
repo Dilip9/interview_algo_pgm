@@ -1,11 +1,42 @@
 package org.example.java8;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FunctionalPgm {
 
     public static void main(String[] args) {
-        // HCL second round
+        // HCL Interview question for second and final round.
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("John", 30, 3000, "IT", "Indian"));
+        employees.add(new Employee("Pratik", 22, 5200, "IT", "Indian"));
+        employees.add(new Employee("John", 30, 50200, "IT", "Indian"));
+        employees.add(new Employee("Devil", 60, 452300, "HR", "France"));
+        employees.add(new Employee("Gouri", 18, 30875600, "CS", "Germany"));
+        employees.add(new Employee("Erick", 34, 3023400, "Operation", "USA"));
+        employees.add(new Employee("Rohan", 20, 70250, "DELIVERY", "Indian"));
+        employees.add(new Employee("Rashmi", 56, 30200, "MEDICAL", "Indian"));
+        employees.add(new Employee("Hemalatha", 67, 30200, "IT", "Indian"));
+        employees.add(new Employee("Devyani", 23, 30200, "HR", "France"));
+        employees.add(new Employee("Hanshika", 32, 30200, "CS", "USA"));
+        employees.add(new Employee("Dimple", 43, 10200, "MECHANICAL", "ITALY"));
+
+        List<User> users = new ArrayList<>();
+        users.add(new User("Swamy", 30, "pratik@gmail.com"));
+        users.add(new User("John", 56, "ram@gmail.com"));
+        users.add(new User("John", 72, "rohan3454@gmail.com"));
+        users.add(new User("Meekashi", 50, "dimple3231@gmail.com"));
+        users.add(new User("John", 56, "Gouri24@gmail.com"));
+        users.add(new User("Joel Joy", 23, "Rashmanique@gmail.com"));
+        users.add(new User("Rohini", 30, "hemalatha576@gmail.com"));
+        users.add(new User("Hanshika Roy", 67, "devyani658@yahoo.com"));
+        users.add(new User("Supritha Arti", 30, "hanshika7894@zoho.com"));
+
+        List<Integer> employeess = employees.stream().filter(emp -> emp.getAge()>33).map(employee -> employee.getAge()).collect(Collectors.toList());
+        users.stream().filter(user -> employeess.contains(user.getAge())).forEach(user -> System.out.println("Name: " + user.getName() + ", Age: " + user.getAge() + ", Nationality: " + user.getEmail()));
+
         //BiFunctionalInterface biFunctionalInterface = (a, b) -> a + b;
         int num1=20,num2=30;
         int[] number = {678,345,756,890,2345,7543678,8690112,5467};
@@ -17,8 +48,10 @@ public class FunctionalPgm {
         Arrays.stream(number).reduce(Integer::max).ifPresent(System.out::println);
         Arrays.stream(number).reduce(Integer::min).ifPresent(System.out::println);
         //custom functional interface and reduce method.
-        ReduceFunction<Integer> reduceFunction = (a, b) -> a + b;
-        System.out.println("Sum of numbers: "+reduceFunction.apply(num1, num2));
+        ReduceFunction<Integer> reduceFunction = Integer::sum;
+        System.out.println("Sum of two numbers: "+reduceFunction.apply(num1, num2));
+
+
 
 
 
@@ -34,4 +67,60 @@ interface SumofTwoNumber{
 @FunctionalInterface
 interface ReduceFunction<T>{
     T apply(T t1, T t2);
+}
+
+
+class Employee {
+    private String name;
+    private int age;
+    private double salary;
+    private String department;
+    private String nationality;
+
+
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public double getSalary() {
+        return salary;
+    }
+    public String getDepartment() {
+        return department;
+    }
+    public String getNationality() {
+        return nationality;
+    }
+
+    public Employee(String name, int age, double salary, String department, String nationality) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+        this.department = department;
+        this.nationality = nationality;
+    }
+
+}
+
+class User{
+    private String name;
+    private int age;
+    private String email;
+    public User(String name, int age, String email) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public String getEmail() {
+        return email;
+    }
+
 }
