@@ -1,5 +1,7 @@
 package org.example.java8;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,5 +36,10 @@ public class JavaFunctionalPgm {
                 .sorted(Comparator.comparingInt(emp -> emp.getEmail().length()))
                 .collect(Collectors.toList());
     }
+
+//    public  ArrayList<String> anagramGroups(List<String> words){
+//        Collection<List<String>> result  = words.stream().collect(Collectors.groupingBy(word -> words.stream().sorted().collect(Collectors.joining()))).values());
+//        return result;
+//    }
 
 }

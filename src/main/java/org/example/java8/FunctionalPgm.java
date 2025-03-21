@@ -51,6 +51,15 @@ public class FunctionalPgm {
         ReduceFunction<Integer> reduceFunction = Integer::sum;
         System.out.println("Sum of two numbers: "+reduceFunction.apply(num1, num2));
         System.out.println("Sum of two numbers: "+JavaFunctionalPgm.sortEmployeeBasedOnEmailAdDressLength(users));
+        List<String> words = Arrays.asList("listen", "silent", "enlist", "rat", "tar", "art", "java");
+        JavaFunctionalPgm javaFunctionalPgm = new JavaFunctionalPgm();
+        //System.out.println(" Anagram of words: "+javaFunctionalPgm.anagramGroups(words));
+        words.stream()
+                .collect(Collectors.groupingBy(word -> word.chars()
+                        .sorted()
+                        .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                        .toString())).forEach((k, v) -> System.out.println( "key "+k+"Value " +v));
+
 
     }
 }
