@@ -77,19 +77,6 @@ public class LinkedListPgm {
         }
         prev.next = null;
         System.out.println("Removing cycle in LL :");
-
-
-
     }
 
-}
-class Node {
-    int val;
-    Node next;
-
-    Node(int new_data){
-        this.val=new_data;
-        this.next = null;
-
-    }
 }
