@@ -17,6 +17,20 @@ public class LLDS {
      *
      * */
     public static void main(String[] args) {
+        SingleLLInsertPrint list = new SingleLLInsertPrint();
+        list.insert(10);
+        list.insert(22);
+        list.insert(30);
+        list.insert(52);
+        list.insert(90);
+        list.insert(67);
+        list.insert(105);
+        list.insert(220);
+        list.insert(38974);
+        list.insert(5564);
+        list.insert(99);
+        list.insert(89);
+        list.print();
 
     }
 }

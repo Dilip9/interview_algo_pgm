@@ -7,6 +7,5 @@ public class SinglyLinkedNode {
     SinglyLinkedNode(int data){
         this.data = data;
         this.next = null;
-
     }
 }
