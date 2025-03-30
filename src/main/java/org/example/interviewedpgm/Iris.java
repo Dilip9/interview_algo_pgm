@@ -1,9 +1,6 @@
 package org.example.interviewedpgm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Iris {
 
@@ -13,6 +10,7 @@ public class Iris {
         String s1 = "listen";
         String s2 = "silent";
         boolean isAnagram = testTwoStringIsAnagram(s1, s2);
+        System.out.println(testAnaGram(s1, s2));
         System.out.println(isAnagram);
         int[] result = printNextGreaterElement(num);
         System.out.println("::"+ Arrays.toString(result));
@@ -36,5 +34,19 @@ public class Iris {
         char[] chr2 = s2.toCharArray();
         Arrays.sort(chr2);
         return Arrays.equals(chr1, chr2);
+    }
+    public static boolean testAnaGram(String s1, String s2){
+        if(s1.length() != s2.length()){
+            return false;
+        }
+        HashMap<Character, Integer> freqMap = new HashMap<>();
+        for(char ch : s1.toCharArray()){
+            freqMap.put(ch, freqMap.getOrDefault(ch, 0)+1);
+        }
+        for(char ch : s2.toCharArray()){
+            if(!freqMap.containsKey(ch) || freqMap.get(ch) == 0) return false;
+            freqMap.put(ch, freqMap.get(ch) - 1);
+        }
+        return true;
     }
 }
