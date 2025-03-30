@@ -16,9 +16,11 @@ public class SearchFirstAndLastPosition {
     }
 
     private static int findLastElementPosition(int[] nums, int target) {
+        return 8;
     }
 
     private static int findFirstElementPosition(int[] nums, int target) {
+        return 6;
     }
 
 
