@@ -2,19 +2,14 @@ package org.example.interviewedpgm;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Accenture {
 
-//
-//    List numbers = Arrays.asList(1, 2, 2, 3, 4, 4);
-//number.stream().distinct().collect(Collectors.toList());
+
 //    List names = Arrays.asList("Charlie", "Alice", "Bob");
 //names.stream().sort().forEach(System.out::println());
 //
-//    List numbers = Arrays.asList(5, 3, 1, 4, 2);
-//number.stream().sort().findFirst();  // first number in ascending order
-//number.stream().sort().skip(n-2).findFirst(); // third number in ascending order
-
 //    to print distinct elements from a list of integers.
 //    streams
 //    List names = Arrays.asList("Charlie", "Alice", "Bob");
@@ -45,11 +40,13 @@ public class Accenture {
         String s2 = new String("Hello");
         System.out.println(s1==s2);
         System.out.println(s1.equals(s2));
-        List<Integer> numbers = Arrays.asList(1, 2, 2, 3, 4, 4);
+        List<Integer> numbers = Arrays.asList(1, 2,9, 10, 3, 4, 4);
         numbers.stream().distinct().forEach(System.out::println);
         int number = numbers.stream().sorted().findFirst().get();
         System.out.println("First Number : "+number);
-        int thrirdNumber = numbers.stream().sorted((a,b) -> b - a).skip(numbers.size()-2).findFirst().get();
+        int thrirdNumber = numbers.stream().sorted((a,b) -> b - a).skip(numbers.size()-3).findFirst().get();
         System.out.println(" Third heigest number :"+thrirdNumber);
+        List<String> strNames = Arrays.asList("Charlie", "Alice", "Bob");
+        strNames.stream().sorted().forEach(System.out::println);
     }
 }
