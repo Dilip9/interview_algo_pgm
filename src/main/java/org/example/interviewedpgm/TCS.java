@@ -4,7 +4,9 @@ import org.example.java8.Employee;
 import org.example.java8.FunctionalPgm;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TCS {
@@ -40,6 +42,8 @@ public class TCS {
                 .entrySet().stream().forEach((depart)-> System.out.println("Department: "+depart.getKey()+" Designation :"+depart.getValue()));
         employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.groupingBy(Employee::getDesignation, Collectors.summingDouble(Employee::getSalary)))).entrySet().stream().forEach(System.out::println);
+        employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary)))
+                .entrySet().stream().sorted( Map.Entry.comparingByValue(Comparator.reverseOrder())).forEach((empKey) -> System.out.println("Department: "+empKey.getKey()+" Total Salary :"+empKey.getValue()));
     }
 
 }
