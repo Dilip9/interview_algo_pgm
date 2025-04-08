@@ -21,11 +21,11 @@ public class NeoSoftTech {
     }
 
     public static String convertToBinarys(int number) {
-        int numbers =0;
+        StringBuilder numbers = new StringBuilder();
         while (number > 0) {
             int remainder = number % 2;
             //binary.insert(0, remainder);
-            numbers = numbers + remainder;
+            numbers.insert(0, remainder);
             number = number / 2;
         }
         return numbers+"";
