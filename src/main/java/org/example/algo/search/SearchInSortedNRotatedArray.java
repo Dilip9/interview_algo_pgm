@@ -30,6 +30,4 @@ public class SearchInSortedNRotatedArray {
         }
         return -1;
     }
-
-
 }
