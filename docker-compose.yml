@@ -1,0 +1,25 @@
+services:
+    app:
+        image: ghcr.io/yourusername/yourapp:latest
+        ports:
+        - "8080:80"
+        environment:
+        - NODE_ENV=production
+        volumes:
+        - ./app:/usr/src/app
+        networks:
+        - app-network
+    database:
+        image: postgres:latest
+        environment:
+        - POSTGRES_USER=youruser
+        - POSTGRES_PASSWORD=yourpassword
+        - POSTGRES_DB=yourdb
+        volumes:
+        - db-data:/var/lib/postgresql/data
+        networks:
+        - app-network
+    redis:
+        image: redis:latest
+        networks:
+        - app-network
