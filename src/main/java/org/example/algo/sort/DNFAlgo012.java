@@ -33,7 +33,6 @@ public class DNFAlgo012 {
                 case 0:
                     swap(arr, low++, mid++);
                     break;
-
                 case 1:
                     mid++;
                     break;
