@@ -1,6 +1,7 @@
 package org.example.interviewedpgm;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Epam {
     public static void main(String[] args) {
@@ -22,5 +23,37 @@ public class Epam {
             }
         }
         System.out.println(max);
+
+        // Insert Data into LinkedList.
+//         LinkedList<String> list = new LinkedList<>();
+//         list.add("A");
+//         list.add("B");
+//         list.add("C");
+//         list.add("D");
+//         removeNthNodeFromEnd(list, 2);
     }
+//
+//    private static Node removeNthNodeFromEnd(Node head, int i) {
+//        Node dummy = new Node(0);
+//        Node temp = dummy;
+//        Node slow = head;
+//        Node fast = head;
+//        int counter =0;
+//        int n = 5; // nth nod need to be deleted from end;
+//        while (head !=null){
+//            temp = head.next;
+//            counter++;
+//        }
+//        if(counter - n == 0){
+//            return temp.next;
+//        }
+//        for (int j = 0; j < counter - n; j++) {
+//            slow = slow.next;
+//        }
+//        slow.next = slow.next.next;
+//
+//        return head;
+//    }
+
+
 }
