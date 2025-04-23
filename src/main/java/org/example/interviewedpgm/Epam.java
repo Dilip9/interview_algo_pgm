@@ -6,6 +6,9 @@ import java.util.LinkedList;
 public class Epam {
     public static void main(String[] args) {
         String s = "abcabcabd"; // O/P: 4
+        // find missing number from given an array .
+        int[] num = {1,2,5,3,9,1,6,4,10,8};
+        System.out.println(missingNumber(num));
         int n = s.length();
         int left=0, right = 0;
         int max = 0;
@@ -54,6 +57,17 @@ public class Epam {
 //
 //        return head;
 //    }
+
+    public static int missingNumber(int[] num) {
+        int n = num.length;
+        int total = (n * (n + 1)) / 2;
+        int sum = 0;
+        for (int i : num) {
+            sum += i;
+        }
+        return (total - sum)+1;
+    }
+
 
 
 }
