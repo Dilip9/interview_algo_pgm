@@ -8,7 +8,7 @@ public class Epam {
         String s = "abcabcabd"; // O/P: 4
         // find missing number from given an array .
         int[] num = {1,2,5,3,9,1,6,4,10,8};
-        System.out.println(missingNumber(num));
+        System.out.println((num));
         int n = s.length();
         int left=0, right = 0;
         int max = 0;
@@ -40,7 +40,6 @@ public class Epam {
 //        Node dummy = new Node(0);
 //        Node temp = dummy;
 //        Node slow = head;
-//        Node fast = head;
 //        int counter =0;
 //        int n = 5; // nth nod need to be deleted from end;
 //        while (head !=null){

@@ -1,5 +1,8 @@
 package org.example.java8;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Employee {
     private String name;
     private int age;
@@ -7,7 +10,7 @@ public class Employee {
     private String department;
     private String designation;
     private String nationality;
-
+    private LocalDate createdAt;
 
     public String getName() {
         return name;
@@ -32,6 +35,12 @@ public class Employee {
     public void setDesignation(String designation) {
         this.designation = designation;
     }
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public Employee(String name, int age, double salary, String department, String nationality) {
         this.name = name;
@@ -53,6 +62,13 @@ public class Employee {
         this.age = age;
         this.nationality = nationality;
     }
+    public Employee(String name, double salary, String department, LocalDate createdAt) {
+        this.name = name;
+        this.salary = salary;
+        this.department = department;
+        this.createdAt = createdAt;
+    }
+
 
     @Override
     public String toString() {
@@ -61,7 +77,9 @@ public class Employee {
                 ", age=" + age +
                 ", salary=" + salary +
                 ", department='" + department + '\'' +
-                ", Nationality' " + nationality + '\'';
+                ", designation='" + designation + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
     }
-
 }

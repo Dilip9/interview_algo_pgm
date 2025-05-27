@@ -11,7 +11,6 @@ public class MergeWithoutSpace {
         int m = b.length;
 
         merge(a, b, n, m);
-        Arrays.sort(a);
         System.out.print("Array a: ");
         for (int i : a) {
             System.out.print(i + " ");
@@ -24,22 +23,41 @@ public class MergeWithoutSpace {
         }
     }
     public static void merge(int[] a, int[] b, int n, int m) {
-        for (int i = n - 1; i >= 0; i--) {
-            if (a[i] > b[0]) {
-                // Swap a[i] and b[0]
-                int temp = a[i];
-                a[i] = b[0];
-                b[0] = temp;
+        int gap = nextGap(n + m);
+        while (gap > 0) {
+            int i = 0, j = gap;
+            while (j < n + m) {
+                int val1 = (i < n) ? a[i] : b[i - n];
+                int val2 = (j < n) ? a[j] : b[j - n];
 
-                // Move b[0] to correct position to keep b[] sorted
-                int first = b[0];
-                int j = 1;
-                while (j < m && b[j] < first) {
-                    b[j - 1] = b[j];
-                    j++;
+                if (val1 > val2) {
+                    if (i < n && j < n) {
+                        // Both in array a
+                        int temp = a[i];
+                        a[i] = a[j];
+                        a[j] = temp;
+                    } else if (i < n && j >= n) {
+                        // a and b
+                        int temp = a[i];
+                        a[i] = b[j - n];
+                        b[j - n] = temp;
+                    } else {
+                        // Both in array b
+                        int temp = b[i - n];
+                        b[i - n] = b[j - n];
+                        b[j - n] = temp;
+                    }
                 }
-                b[j - 1] = first;
+
+                i++;
+                j++;
             }
+            gap = nextGap(gap);
         }
+    }
+
+    private static int nextGap(int gap) {
+        if (gap <= 1) return 0;
+        return (gap / 2) + (gap % 2);
     }
 }
