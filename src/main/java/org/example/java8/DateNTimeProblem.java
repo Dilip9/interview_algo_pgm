@@ -32,6 +32,9 @@ public class DateNTimeProblem {
         long result= startDate.datesUntil(endDate.plusDays(1))
                 .filter(d -> !(d.getDayOfWeek() == DayOfWeek.SATURDAY || d.getDayOfWeek()== DayOfWeek.SUNDAY || holidays.contains(d))).count();
         System.out.println("Number of working days between " + startDate + " and " + endDate + ": " + result);
-        IntStream.rangeClosed(1, 12).mapToObj(month -> YearMonth.of(2025, month).atDay(1).with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY))).collect(Collectors.toList()).forEach(System.out::println);
+        IntStream.rangeClosed(1, 12)
+                .mapToObj(month -> YearMonth.of(2025, month).atDay(1).with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)))
+                .collect(Collectors.toList()).forEach(System.out::println);
+
     }
 }
